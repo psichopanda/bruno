@@ -12,5 +12,5 @@ get {
 
 script:pre-request {
   const request = await bru.runRequest("login")
-  req.setHeader("jwt", request.data.jwt)
+  req.setHeader("Authorization", "Bearer "+request.data.jwt)
 }

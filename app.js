@@ -23,7 +23,7 @@ app.post('/login-jwt', async (req, res) => {
 })
 
 app.get('/profile', async (req, res) => {
-    const jwt = req.header("jwt")
+    const jwt = req.header("Authorization")?.split(' ')[1]
     const { payload } = await jwtVerify(jwt, secret)
     if(payload?.user)
         res.json(payload)
