@@ -1,0 +1,16 @@
+meta {
+  name: profile
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base}}/profile
+  body: none
+  auth: inherit
+}
+
+script:pre-request {
+  const request = await bru.runRequest("login")
+  req.setHeader("jwt", request.data.jwt)
+}

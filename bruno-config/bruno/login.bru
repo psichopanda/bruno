@@ -1,0 +1,22 @@
+meta {
+  name: login
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base}}/login-jwt
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "user": "{{user}}",
+    "pass": "{{pass}}"
+  }
+}
+
+vars:post-response {
+  set-jwt: bru.setVar("jwt", res.body.jwt);
+}
